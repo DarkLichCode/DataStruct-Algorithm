@@ -43,6 +43,20 @@ impl<T> LinkedList<T> {
 		self.size += 1;
 	}
 
+	// 删除头部节点
+	pub fn removeHead(&mut self) -> bool {
+		if self.size == 0 {
+			return false;
+		}
+
+		let tempNode = self.head.as_mut();
+		if let Some(node) = tempNode {
+			self.head = node.next.take();
+		}
+		self.size -= 1;
+		return true;
+	}
+
 	// 尾插法
 	pub fn pushBack(&mut self, data: T) {
 		if self.head.is_none() {
@@ -63,6 +77,22 @@ impl<T> LinkedList<T> {
 			}
 		}
 		self.size += 1;
+	}
+
+	// 删除尾部节点
+	pub fn removeBack(&mut self) -> bool {
+		if self.size == 0 {
+			return false;
+		}
+
+		if self.size == 1 {
+			self.removeHead();
+			self.size -= 1;
+			return true;
+		}
+
+		self.size -= 1;
+		return true;
 	}
 
 	// 判断链表是否为空

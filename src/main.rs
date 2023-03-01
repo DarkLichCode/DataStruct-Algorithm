@@ -1,6 +1,5 @@
-mod LinkedListLib;
-
-use LinkedListLib::LinkedList;
+mod LinearList;
+use LinearList::LinkedListLib::LinkedList;
 
 fn main() {
 	let mut link = LinkedList::New();
@@ -14,8 +13,8 @@ fn main() {
         tempHead = node.next.as_ref();
     }
 
-    link.reverse();
-
+    // link.reverse();
+    link.removeHead();
     tempHead = link.head.as_ref();
     while let Some(node) = tempHead.take() {
         println!("{}", node.data);
