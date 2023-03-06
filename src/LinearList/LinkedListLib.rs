@@ -87,8 +87,18 @@ impl<T> LinkedList<T> {
 
 		if self.size == 1 {
 			self.removeHead();
-			self.size -= 1;
 			return true;
+		}
+		let mut tempNode = self.head.as_mut();
+		while let Some(mut curNode) = tempNode.take() {
+			let mut nextNode = curNode.next.take().unwrap();
+			if nextNode.next.is_none() {
+				curNode.next = None;
+				break;
+			} else {
+				curNode.next = Some(nextNode);
+			}
+			tempNode = curNode.next.as_mut();
 		}
 
 		self.size -= 1;
