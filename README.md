@@ -4,4 +4,4 @@
 
 ## 实现目录
 
-单链表			src/LinkedListLib.rs
+单链表			src/LinearList/LinkedListLib.rs
